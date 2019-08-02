@@ -1,0 +1,110 @@
+/* 全局变量 */
+
+// 颜色
+$color-brand: #23b8ff;
+$color-success: #3aa60d;
+$color-warning: #ff6600;
+$color-danger: #e6321a;
+$color-info: #909399;
+$color-default-bgc: #f2f2f2;
+$color-default-bdc: #f2f2f2;
+$color-default-input_placeholder_color: #ddd;
+$color-black: #000;
+// 字体
+$font-base-size: 14px;
+$font-base-weight: 400;
+$font-base-line-height: 1.5;
+// 定位层级
+$z-index-base: 1;
+$z-index-one: 9;
+$z-index-two: 99;
+$z-index-three: 999;
+$z-index-four: 9999;
+
+/* 全局类 */
+
+// 盒模型隐藏
+@mixin none {
+  display: none;
+}
+
+// 基础字体样式
+@mixin base-font {
+  font-size: $font-base-size;
+  line-height: $font-base-line-height;
+  font-weight: $font-base-weight;
+}
+
+// 清除内外边距
+@mixin clear-pm {
+  margin: 0;
+  padding: 0;
+}
+
+// 继承父盒子宽高
+@mixin wh100 {
+  width: 100%;
+  height: 100%;
+}
+
+// $img 雪碧图的路径和名称
+// $spriteWidth 雪碧图一倍图的宽度
+// $spriteHeight 雪碧图一倍图的高度
+// $sprite2Width 雪碧图二倍图的宽度
+// $sprite2Height 雪碧图二倍图的高度
+// $spriteWidth 雪碧图的宽度px
+// $spriteHeight 雪碧图的高度px
+// $iconWidth 需要显示icon的宽度px
+// $iconHeight 需要显示icon的高度px
+// $icon2Width 需要显示icon的二倍宽度px
+// $icon2Height 需要显示icon的二倍高度px
+// $iconX icon的原始x坐标
+// $iconY icon的原始y坐标
+// $icon2X icon的原始二倍x坐标
+// $icon2Y icon的原始二倍y坐标
+@mixin bgImage(
+  $img,
+  $spriteWidth,
+  $spriteHeight,
+  $iconWidth,
+  $iconHeight,
+  $iconX,
+  $iconY,
+  $sprite2Width,
+  $sprite2Height,
+  $icon2Width,
+  $icon2Height,
+  $icon2X,
+  $icon2Y
+) {
+  background-image: url($img+'.png');
+  background-size: $spriteWidth + px, $spriteHeight + px;
+  background-position: (($iconX / ($spriteWidth - $iconWidth)) * 100% ($iconY / ($spriteHeight - $iconHeight)) * 100%);
+  background-repeat: no-repeat;
+  @media screen and (min-width: 768px) {
+    background-image: url($img+'@2x.png');
+    background-size: $sprite2Width + px, $sprite2Height + px;
+    background-position: (
+      ($icon2X / ($sprite2Width - $icon2Width)) * 100% ($icon2Y / ($sprite2Height - $icon2Height)) * 100%
+    );
+    background-repeat: no-repeat;
+  }
+}
+
+@mixin bgImageNone($img, $spriteWidth, $spriteHeight, $iconWidth, $iconHeight, $iconX, $iconY) {
+  background-image: url($img+'.png');
+  background-size: $spriteWidth + px, $spriteHeight + px;
+  background-position: (($iconX / ($spriteWidth - $iconWidth)) * 100% ($iconY / ($spriteHeight - $iconHeight)) * 100%);
+  background-repeat: no-repeat;
+  @media screen and (min-width: 768px) {
+  }
+}
+
+@mixin size($width, $height, $num) {
+  width: $width + px;
+  height: $height + px;
+  @media screen and (min-width: 768px) {
+    width: $num * $width + px;
+    height: $num * $height + px;
+  }
+}

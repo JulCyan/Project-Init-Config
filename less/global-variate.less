@@ -1,0 +1,237 @@
+/* 全局变量 */
+// 颜色
+@color-brand: #23b8ff;
+@color-success: #3aa60d;
+@color-warning: #ff6600;
+@color-danger: #e6321a;
+@color-info: #808080;
+@color-grey: #999;
+@color-title: #333;
+@color-text: #666;
+@color-default-bgc: #f5f5f5;
+@color-default-bdc: #f2f2f2;
+@color-default-input_placeholder_color: #ddd;
+@color-black: #000;
+@color-border: #eee;
+@color-orange: #ff9f00;
+// 字体
+@font-base-size: 14px;
+@font-base-weight: 400;
+@font-base-line-height: 1.5;
+// 定位层级
+@z-index-base: 1;
+@z-index-one: 9;
+@z-index-two: 99;
+@z-index-three: 999;
+@z-index-four: 9999;
+
+/* 全局类 */
+// 盒模型隐藏
+.none {
+  display: none;
+}
+
+// 基础字体样式
+.base-font {
+  font-size: @font-base-size;
+  line-height: @font-base-line-height;
+  font-weight: @font-base-weight;
+}
+
+// 清除内外边距
+.clear-pm {
+  margin: 0;
+  padding: 0;
+}
+
+// 继承父盒子宽高
+.wh100 {
+  width: 100%;
+  height: 100%;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+// font-size 10px
+.text-scale {
+  display: inline-block;
+  font-size: 12px !important;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.8333);
+}
+
+.borderRadius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+//定位全屏
+.allcover {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+//定位上下左右居中
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+.ct {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+.cl {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//宽高
+.wh(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+//字体大小，颜色
+.sc(@size, @color) {
+  font-size: @size;
+  color: @color;
+}
+
+.text-green {
+  color: @color-success;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-orange {
+  color: @color-warning;
+}
+
+//flex 垂直布局
+.fdc {
+  display: flex;
+  flex-direction: column;
+}
+
+.bgColor {
+  background: linear-gradient(
+    0deg,
+    rgba(146, 0, 249, 0.99) 0%,
+    rgba(146, 0, 249, 0.99) 44%,
+    rgba(127, 0, 255, 0.99) 93%,
+    rgba(137, 0, 252, 0.99) 97%,
+    rgba(146, 0, 249, 0.99) 100%
+  );
+}
+
+//-----flex居中布局-----
+//横向居中
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+//横向垂直居中
+.row-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.row-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+//横向环绕
+.row-around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+//横向非环绕
+.row-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//纵向居中
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+//纵向顶部对齐居中
+.column-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.column-left-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+//纵向底部对齐居中
+.column-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+//纵向左对齐
+.column-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+//两边对齐
+.row-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//自定义
+.self(@a,@b,@c) {
+  display: flex;
+  flex-direction: @a;
+  justify-content: @b;
+  align-items: @c;
+}
