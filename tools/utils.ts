@@ -1,7 +1,7 @@
 import { BaseNS } from '@/config/type'
 import { Toast } from 'vant'
 import { regWeChat } from '@/plugins/regexp'
-import { BrowserName } from '@/config/const'
+import { BrowserName, ImplicitParseFalseExcludes } from '@/config/const'
 import axios from 'axios'
 import { WeChatJsApiList as jsApiList } from '@/config/const'
 // @ts-ignore
@@ -173,7 +173,7 @@ class Utils {
         if (current) {
           root = val = current
         } else {
-          val = defaultParam
+          ImplicitParseFalseExcludes.includes(current) ? (root = val = current) : (val = defaultParam)
         }
       }
     } else {
@@ -335,7 +335,7 @@ class Utils {
         signUrl: location.href,
       },
     })
-    console.log(this.wx);
+    console.log(this.wx)
     weChatConfig = res.data
     console.log(res.data)
     var { appId, timestamp, nonceStr, signature } = weChatConfig
