@@ -1,0 +1,44 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "author": "BlackCyan",
+  "private": false,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start --port 3002 ",
+    "test": "nuxt start --port 3002 --mode test",
+    "generate": "nuxt generate"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,vue,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.4.1",
+    "@nuxtjs/proxy": "^1.3.3",
+    "cross-env": "^5.2.0",
+    "js-cookie": "^2.2.0",
+    "nuxt": "^2.6.2",
+    "regenerator-runtime": "^0.13.2",
+    "vant": "^1.6.15"
+  },
+  "devDependencies": {
+    "husky": "^2.1.0",
+    "lint-staged": "^8.1.5",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.18.9",
+    "postcss-pxtorem": "^4.0.1",
+    "prettier": "^1.17.0",
+    "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0"
+  }
+}
