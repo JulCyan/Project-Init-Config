@@ -367,6 +367,46 @@ class Utils {
     //   }
     // });
   }
+
+  public resursiveSortRoutes(resource: any, sortFn: (...args: any) => number, children: string = 'options'): any {
+    let newList: Array<any> = []
+
+    Object.keys(resource).forEach(key => {
+      newList.push(resource[key])
+    })
+
+    newList.sort(sortFn).forEach(item => {
+      if (item[children]) {
+        let optionList = this.resursiveSortRoutes(item[children], sortFn)
+        item[children] = optionList
+      }
+    })
+
+    return newList
+  }
+
+  public byteConvert(bytes: any) {
+    if (isNaN(bytes)) {
+      return ''
+    }
+    let symbols = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+    let exp = Math.floor(Math.log(bytes) / Math.log(2))
+    if (exp < 1) {
+      exp = 0
+    }
+    let i = Math.floor(exp / 10)
+    bytes = bytes / Math.pow(2, 10 * i)
+
+    if (bytes.toString().length > bytes.toFixed(2).toString().length) {
+      bytes = bytes.toFixed(2)
+    }
+    return bytes + '' + symbols[i]
+  }
+
+  public isNumber(param: any) {
+    return !isNaN(parseFloat(param)) &&
+      isFinite(param)
+  }
 }
 
 export default {
